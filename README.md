@@ -13,3 +13,35 @@ Build and Test
 ==============
 The project uses cargo
 build using `cargo build` and test it using the `cargo test` commands.
+
+Cargo configuration
+===================
+just add
+```
+[dependencies.emitter]
+
+git = "https://github.com/kentaromiura/RustyEmitter.git"
+```
+
+to your `Cargo.toml` file.
+
+to use it like
+```
+extern crate emitter;
+use emitter::{Events, Emitter};
+
+
+...
+
+// create a new emitter instance
+  let mut emitter = Emitter::new();
+// listen to the "IT WORKS" event
+  emitter.on(String::from_str("IT WORKS"),|data| print!("IT WORKS, {}", data));
+// fire the "IT WORKS" event with an empty HashMap;
+  emitter.emit(String::from_str("IT WORKS"), HashMap::new());
+
+// fire it again passing some more data
+  let mut datas : HashMap<String, String> = HashMap::new();
+  datas.insert("some data", "here");
+  emitter.emit(String::from_str("IT WORKS", datas));
+```
