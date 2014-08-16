@@ -1,0 +1,5 @@
+[package]
+
+name = "emitter"
+version = "1.0.0"
+authors = ["Cristian Carlesso <@kentaromiura> (http://github.com/kentaromiura)"]
