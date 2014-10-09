@@ -24,7 +24,6 @@ impl<'callback, T> Emitter<'callback, T>{
 
 impl<'callback, T> Events<'callback, T> for Emitter<'callback, T> {
   fn on(&mut self, event_name: String, callback: EventCallback<'callback, T>) {
-    //let vec : Vec<EventCallback<'callback>>;
     if self.events.contains_key(&event_name) {
       self.events.get_mut(&event_name).push(callback);
     } else {
