@@ -7,7 +7,9 @@ and a default implementation of that trait, called Emitter.
 In order to use it, you must `use` the trait in your code.
 
 The Emitter can register multiple callbacks for the same event,
-and it will pass *a copy* of an HashMap<String, String> to those.
+and it will pass *a mutable reference* of an HashMap<String, T> to those.
+
+Since it's a mutable reference the function consuming the emitter can modify the HashMap, hence allowing a 2 channel communication between the event dispatcher and the code listening to the event
 
 Build and Test
 ==============
@@ -43,5 +45,5 @@ use emitter::{Events, Emitter};
 // fire it again passing some more data
   let mut datas : HashMap<String, String> = HashMap::new();
   datas.insert("some data", "here");
-  emitter.emit(String::from_str("IT WORKS", datas));
+  emitter.emit(String::from_str("IT WORKS", & mut datas));
 ```
