@@ -40,7 +40,8 @@ fn main(){
   // create a new emitter instance
   let mut emitter = Emitter::new();
   // listen to the "IT WORKS" event
-  emitter.on(String::from_str("IT WORKS"),|data| print!("IT WORKS, {}\n", data));
+  let callback = & mut |& mut:data| print!("IT WORKS, {}\n", data);
+  emitter.on(String::from_str("IT WORKS"), callback);
   // fire the "IT WORKS" event with an empty HashMap;
   emitter.emit(String::from_str("IT WORKS"), & mut HashMap::new());
 
