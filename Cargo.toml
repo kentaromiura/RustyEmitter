@@ -1,6 +1,6 @@
 [package]
 
-name = "emitter"
+name = "RustyEmitter"
 version = "2.1.0"
 authors = ["Cristian Carlesso <@kentaromiura> (http://github.com/kentaromiura)"]
 description = "RustyEmitter is a basic implementation of a simple emitter. The module expose a Events trait with the on, off and emit methods, and a default implementation of that trait, called Emitter."
