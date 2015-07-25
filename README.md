@@ -23,17 +23,16 @@ Cargo configuration
 
 just add
 ```
-[dependencies.emitter]
-
-git = "https://github.com/kentaromiura/RustyEmitter.git"
+[dependencies.RustyEmitter]
+version = "2.1.0"
 ```
 
 to your `Cargo.toml` file.
 
 to use it like
 ```
-extern crate emitter;
-use emitter::{Events, Emitter};
+extern crate RustyEmitter;
+use RustyEmitter::{Events, Emitter};
 use std::collections::HashMap;
 
 fn main(){  
