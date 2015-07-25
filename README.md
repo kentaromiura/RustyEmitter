@@ -36,19 +36,27 @@ extern crate emitter;
 use emitter::{Events, Emitter};
 use std::collections::HashMap;
 
-fn main(){
-  // create a new emitter instance
-  let mut emitter = Emitter::new();
+fn main(){  
+  let (mut emitter, callback) = (
+    // create a new emitter instance
+    Emitter::new(),
+    // creating the handler in the same lifetime 
+    &mut |data:& mut HashMap<String, String>| { 
+      println!("IT WORKS!");
+      for (key, value) in data {
+          println!("{}: {}", key, value);
+      }
+    }
+  );
   // listen to the "IT WORKS" event
-  let callback = & mut |& mut:data| print!("IT WORKS, {}\n", data);
-  emitter.on(String::from_str("IT WORKS"), callback);
+  emitter.on("IT WORKS".to_string(), callback);
   // fire the "IT WORKS" event with an empty HashMap;
-  emitter.emit(String::from_str("IT WORKS"), & mut HashMap::new());
+  emitter.emit("IT WORKS".to_string(), & mut HashMap::new());
 
   // fire it again passing some more data
   let mut datas : HashMap<String, String> = HashMap::new();
-  datas.insert(String::from_str("some data"), String::from_str("here"));
-  emitter.emit(String::from_str("IT WORKS"), & mut datas);
+  datas.insert("some data".to_string(), "here".to_string());
+  emitter.emit("IT WORKS".to_string(), & mut datas);
 }
 
 ```
