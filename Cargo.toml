@@ -7,7 +7,7 @@ description = "RustyEmitter is a basic implementation of a simple emitter. The m
 homepage = "https://github.com/kentaromiura/RustyEmitter/blob/master/README.md"
 repository = "https://github.com/kentaromiura/RustyEmitter/"
 readme = "README.md"
-keywords = "emitter"
+keywords = ["emitter"]
 license = "MIT"
 license-file = "LICENSE"
 
