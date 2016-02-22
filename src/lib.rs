@@ -10,7 +10,7 @@ pub trait Events<'callback, T> {
   fn emit(&mut self, event_name: String, EventData: & mut EventData<T>);
 }
 
-pub struct Emitter<'callback, T> {
+pub struct Emitter<'callback, T: 'callback> {
   events : HashMap<String, Vec<&'callback mut EventCallback<'callback, T>>>
 }
 
